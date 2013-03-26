@@ -25,6 +25,8 @@ my $builder = Module::Build->new(
         %{ $prereqs->{test}->{requires}   || {}},
     },
 
+    extra_linker_flags => ['-lspeex'],
+
     no_index    => { 'directory' => [ 'inc' ] },
     name        => 'Audio-Speex',
     module_name => 'Audio::Speex',

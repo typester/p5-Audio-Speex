@@ -5,6 +5,8 @@
 #define NEED_newSVpvn_flags
 #include "ppport.h"
 
+#include <speex/speex.h>
+
 MODULE = Audio::Speex    PACKAGE = Audio::Speex
 
 PROTOTYPES: DISABLE
