@@ -58,6 +58,9 @@ MODULE = Audio::Speex  PACKAGE = Audio::Speex::Encoder  PREFIX = speex_encoder_
 Audio::Speex::Encoder
 speex_encoder_init(Audio::Speex::Mode mode)
 
+void
+speex_encoder_destroy(Audio::Speex::Encoder state)
+
 int
 speex_encoder_ctl(Audio::Speex::Encoder state, int request, SV* ptr)
 CODE:
@@ -81,3 +84,4 @@ CODE:
 }
 OUTPUT:
     RETVAL
+
