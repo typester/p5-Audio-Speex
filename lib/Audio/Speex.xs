@@ -85,3 +85,24 @@ CODE:
 OUTPUT:
     RETVAL
 
+
+MODULE = Audio::Speex  PACKAGE = Audio::Speex::Encoder  PREFIX = speex_
+
+int
+speex_encode(Audio::Speex::Encoder state, char* in, Audio::Speex::Bits bits)
+CODE:
+{
+    RETVAL = speex_encode(state, (float*)in, bits);
+}
+OUTPUT:
+    RETVAL
+
+int
+speex_encode_int(Audio::Speex::Encoder state, char* in, Audio::Speex::Bits bits)
+CODE:
+{
+    RETVAL = speex_encode_int(state, (spx_int16_t*)in, bits);
+}
+OUTPUT:
+    RETVAL
+
