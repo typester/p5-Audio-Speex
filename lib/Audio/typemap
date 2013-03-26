@@ -1,2 +1,3 @@
 Audio::Speex::Mode     T_PTROBJ
 Audio::Speex::Encoder  T_PTROBJ
+Audio::Speex::Bits     T_PTROBJ

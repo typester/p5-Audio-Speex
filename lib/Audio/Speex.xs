@@ -10,6 +10,7 @@
 /* for typemap */
 typedef const SpeexMode* Audio__Speex__Mode;
 typedef void* Audio__Speex__Encoder;
+typedef SpeexBits* Audio__Speex__Bits;
 
 MODULE = Audio::Speex  PACKAGE = Audio::Speex  PREFIX = speex_
 
@@ -23,6 +24,33 @@ CODE:
 }
 OUTPUT:
     RETVAL
+
+
+MODULE = Audio::Speex  PACKAGE = Audio::Speex::Bits  PREFIX = speex_bits_
+
+Audio::Speex::Bits
+speex_bits_init(SV* class) 
+CODE:
+{
+    SpeexBits* bits;
+
+    Newx(bits, 1, SpeexBits);
+    speex_bits_init(bits);
+    RETVAL = bits;
+}
+OUTPUT:
+    RETVAL
+
+void
+speex_bits_destroy(Audio::Speex::Bits bits)
+CODE:
+{
+    speex_bits_destroy(bits);
+    Safefree(bits);
+}
+
+void
+speex_bits_reset(Audio::Speex::Bits bits)
 
 
 MODULE = Audio::Speex  PACKAGE = Audio::Speex::Encoder  PREFIX = speex_encoder_
