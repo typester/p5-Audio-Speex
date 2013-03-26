@@ -7,22 +7,49 @@
 
 #include <speex/speex.h>
 
+/* for typemap */
+typedef const SpeexMode* Audio__Speex__Mode;
+typedef void* Audio__Speex__Encoder;
+
 MODULE = Audio::Speex  PACKAGE = Audio::Speex  PREFIX = speex_
 
 PROTOTYPES: DISABLE
 
-SpeexMode*
+Audio::Speex::Mode
 speex_nb_mode()
 CODE:
 {
-    RETVAL = (SpeexMode*)&speex_nb_mode;
+    RETVAL = &speex_nb_mode;
 }
 OUTPUT:
     RETVAL
 
-void
-hello()
+
+MODULE = Audio::Speex  PACKAGE = Audio::Speex::Encoder  PREFIX = speex_encoder_
+
+Audio::Speex::Encoder
+speex_encoder_init(Audio::Speex::Mode mode)
+
+int
+speex_encoder_ctl(Audio::Speex::Encoder state, int request, SV* ptr)
 CODE:
 {
-    ST(0) = newSVpvs_flags("Hello, world!", SVs_TEMP);
+    int i;
+
+    if (!SvROK(ptr)) {
+        croak("ptr is not reference");
+    }
+    if (SvOK(SvRV(ptr))) {
+        if (SvIOK(SvRV(ptr))) {
+            i = SvIV(SvRV(ptr));
+        }
+        else {
+            croak("ptr is invalid reference value");
+        }
+    }
+
+    RETVAL = speex_encoder_ctl(state, request, (void*)&i);
+    sv_setiv(SvRV(ptr), i);
 }
+OUTPUT:
+    RETVAL

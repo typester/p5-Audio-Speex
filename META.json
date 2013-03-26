@@ -27,5 +27,16 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/typester/p5-Audio-Speex/issues"
+      },
+      "homepage" : "https://github.com/typester/p5-Audio-Speex",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/typester/p5-Audio-Speex.git",
+         "web" : "https://github.com/typester/p5-Audio-Speex"
+      }
+   },
    "version" : "0.01"
 }

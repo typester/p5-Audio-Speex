@@ -1,1 +1,2 @@
-SpeexMode*       T_PTROBJ
+Audio::Speex::Mode     T_PTROBJ
+Audio::Speex::Encoder  T_PTROBJ
