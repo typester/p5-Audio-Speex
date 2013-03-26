@@ -7,9 +7,18 @@
 
 #include <speex/speex.h>
 
-MODULE = Audio::Speex    PACKAGE = Audio::Speex
+MODULE = Audio::Speex  PACKAGE = Audio::Speex  PREFIX = speex_
 
 PROTOTYPES: DISABLE
+
+SpeexMode*
+speex_nb_mode()
+CODE:
+{
+    RETVAL = (SpeexMode*)&speex_nb_mode;
+}
+OUTPUT:
+    RETVAL
 
 void
 hello()
